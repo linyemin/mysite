@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>本地搭建ChatGLM &mdash; 学习笔记 0.1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=d786bb5c"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="prev" title="ChatGLM" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            学习笔记
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">大模型应用</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">大模型</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">ChatGLM</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">本地搭建ChatGLM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">学习笔记</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">大模型应用</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">大模型</a></li>
+          <li class="breadcrumb-item"><a href="index.html">ChatGLM</a></li>
+      <li class="breadcrumb-item active">本地搭建ChatGLM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/notes/LargeModel/ChatGLM/ChatGLM_install.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chatglm">
+<h1>本地搭建ChatGLM<a class="headerlink" href="#chatglm" title="Link to this heading"></a></h1>
+<p>ChatGLM 是一个面向中文的开源对话模型。以下是详细的步骤来搭建你自己的本地 ChatGLM 环境。如果你遇到任何问题，可以参考官方文档或社区支持。</p>
+<section id="id1">
+<h2>准备工作<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>在开始之前，你需要确保你的计算机满足以下要求：</p>
+<ul class="simple">
+<li><p>64位操作系统（如 Windows、Linux 或 macOS）</p></li>
+<li><p>至少 8GB 的内存</p></li>
+<li><p>NVIDIA GPU（推荐，但不是必须）以及对应的 CUDA 驱动支持</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>步骤摘要<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>安装 Python</p></li>
+<li><p>创建虚拟环境</p></li>
+<li><p>安装依赖项</p></li>
+<li><p>下载 ChatGLM 模型</p></li>
+<li><p>运行模型并进行测试</p></li>
+</ol>
+</section>
+<section id="id3">
+<h2>详细步骤<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="python">
+<h3>安装 Python<a class="headerlink" href="#python" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>首先，需要安装 Python（推荐使用 Python 3.8 及以上版本）。你可以从 Python 官网 (<a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>) 下载并安装相应的版本。</p></li>
+<li><p>安装完成后，确保 Python 和 pip 已正确安装，使用以下命令进行检查:</p>
+<p><cite>python –version</cite>
+<cite>pip –version</cite></p>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h3>创建虚拟环境<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>使用 <cite>venv</cite> 创建虚拟环境，这样可以更好地管理依赖项:</p>
+<p><cite>python -m venv chatglm_env</cite></p>
+</li>
+</ol>
+<p>2. 激活虚拟环境:
+在 Windows 上使用:</p>
+<blockquote>
+<div><p><cite>.chatglm_envScriptsactivate</cite></p>
+</div></blockquote>
+<p>在 macOS/Linux 上使用:</p>
+<blockquote>
+<div><p><cite>source chatglm_env/bin/activate</cite></p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>安装依赖项<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>安装 ChatGLM 所需的依赖项:</p>
+<p><cite>pip install torch torchvision transformers</cite></p>
+</li>
+</ol>
+<p>如果你有 NVIDIA GPU 并且想要使用 GPU 加速，可以参考 PyTorch 官网 (<a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>) 的安装指南安装带有 CUDA 支持的 PyTorch 版本。</p>
+</section>
+<section id="id6">
+<h3>下载 ChatGLM 模型<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>从官方仓库下载 ChatGLM 模型和代码，可以使用 <cite>git</cite> 克隆官方仓库:</p>
+<p><cite>git clone https://github.com/THUDM/ChatGLM.git</cite></p>
+</li>
+<li><p>进入模型目录:</p>
+<p><cite>cd ChatGLM</cite></p>
+</li>
+</ol>
+</section>
+<section id="id7">
+<h3>运行模型并进行测试<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>加载 ChatGLM 模型并进行测试。以下是一个简单的测试脚本（保存为 <cite>test_chatglm.py</cite>）:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;THUDM/chatglm-6b&quot;</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="c1"># 测试输入</span>
+<span class="n">input_text</span> <span class="o">=</span> <span class="s2">&quot;你好，世界！&quot;</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+
+<span class="c1"># 生成回复</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">],</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">top_p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">60</span>
+<span class="p">)</span>
+
+<span class="c1"># 输出结果</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>运行测试脚本:</p>
+<p><cite>python test_chatglm.py</cite></p>
+</li>
+</ol>
+<p>如果一切设置正确，你应该能看到 ChatGLM 模型的回复结果。</p>
+<p>最终，你应该有一个完全运行的本地 ChatGLM 环境。祝你使用愉快！</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="ChatGLM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, crazylin。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -10,6 +10,7 @@ Welcome to 学习笔记's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   notes/index
 
 
 Indices and tables
